@@ -1,6 +1,6 @@
 package io.github.ncc0706
 
-import io.github.ncc0706.chapter01.User
+import kotlin.io.encoding.Base64
 
 /**
  * Created by IntelliJ IDEA. <br/>
@@ -11,14 +11,15 @@ import io.github.ncc0706.chapter01.User
  */
 
 fun main(args: Array<String>) {
-    val userData: UserData = UserData()
-    userData.id = "123";
-    userData.username = "123";
-    userData.email = "123@gmail.com"
 
-    println(userData.toString())
 
-    val user: User = User("123", userData.username, userData.email)
+    val msg = "hello world".toByteArray()
+    val encode = Base64.Default.encode(msg)
+    val encode1 = Base64.encode(msg)
+    println(encode)
+    println(encode1)
 
-    println(user)
+    val decode = Base64.decode(encode)
+    println(String(decode))
+
 }

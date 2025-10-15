@@ -6,33 +6,36 @@ import java.io.DataInputStream
 import java.io.FileInputStream
 
 plugins {
-    kotlin("jvm") version "2.2.10"
+    kotlin("jvm") version "2.2.20"
     id("com.vanniktech.maven.publish") version "0.34.0"
 }
 
 group = "io.github.ncc0706"
 version = "0.0.1-SNAPSHOT"
 
-dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.10")
-    testImplementation(kotlin("test"))
-}
 
-tasks.test {
-    useJUnitPlatform()
-}
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(11))
     }
 }
+
 kotlin {
     jvmToolchain(11)
     compilerOptions{
         jvmTarget = JvmTarget.JVM_11
     }
+}
+
+
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.20")
+    testImplementation(kotlin("test"))
+}
+
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 mavenPublishing {
@@ -43,7 +46,7 @@ mavenPublishing {
 
     pom {
         name = "demo-kotlin"
-        description = "email starter"
+        description = "demo kotlin"
         url = "https://github.com/ncc0706/demo-kotlin"
         licenses {
             license {
