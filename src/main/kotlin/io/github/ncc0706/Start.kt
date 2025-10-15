@@ -14,10 +14,10 @@ fun main(args: Array<String>) {
 
 
     val msg = "hello world".toByteArray()
-    val encode = Base64.Default.encode(msg)
-    val encode1 = Base64.encode(msg)
+    // 内部实现
+//    val encode = Base64.Default.encode(msg)
+    val encode = Base64.encode(msg)
     println(encode)
-    println(encode1)
 
     val decode = Base64.decode(encode)
     println(String(decode))
