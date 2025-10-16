@@ -24,12 +24,15 @@ kotlin {
     jvmToolchain(11)
     compilerOptions{
         jvmTarget = JvmTarget.JVM_11
+        // 但不建议这样做，会破坏 Kotlin 的空安全保证。
+        freeCompilerArgs.add("-Xno-param-assertions")
     }
 }
 
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.20")
+    // 1.8.0开始 kotlin-stdlib-jdk8 里面的实现已经迁移到 kotlin-stdlib 中，所以不需要再依赖这个
+//    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.2.20")
     testImplementation(kotlin("test"))
 }
 
